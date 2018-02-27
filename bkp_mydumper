@@ -1,8 +1,8 @@
 #!/bin/bash
 #
 # Logic Backup MySQL data using MyDumper tool
-# First version from Daniel Guzman Burgos <daniel.guzman.burgos@percona.com>
-# Adapt by Alexandre Legrix to match with a supervisor running <alex@bso.cloud>
+# freely inspired  from Daniel Guzman Burgos <daniel.guzman.burgos@percona.com> modified by Alexandre Legrix
+# Adapted by Alexandre Legrix to match with a supervisor running use <alex@bso.cloud> and to run without the usage of any crontab
 
 clear
 
@@ -180,4 +180,5 @@ removeOldBackup() {
 setLockFile #
 runMysqldump #schema backup only
 removeOldBackup #cleaning the storage before backuping to avoid storage issue
-runMydumper # run Mydumper
+runMydumper # run Mydumper full databases
+#runMydumper_sdb mydbtodump
