@@ -123,6 +123,19 @@ runMydumper() {
 
 }
 
+runMydumper_sdb() { #for a single DB gived in argument
+
+    verifyMydumperBin
+    read $db
+    if [[ $db -eq 0 ]] ; then
+    echo 'you have to give a DBname to dump into args 1'
+    exit 0
+    fi
+    logInfo "[Info] Dumping data with MyDumper single Database .....start"
+    out=$(mydumper -B $db --user=${mysqlUser} --outputdir=${backupPath} --host=${remoteHost} --port=${mysqlPort} --threads=${numberThreads} --compress --kill-long-queries --less-locking --verbose=3 --triggers --routines &>> $logFile)
+    }
+
+
 removeOldBackup() {
 
 	rootPath=$(dirname $backupPath 2>&1)
