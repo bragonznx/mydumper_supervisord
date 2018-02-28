@@ -22,7 +22,7 @@ def executor(cmd):
         err, err
     except Exception as ex:
         print(ex)
-return ex,'C.ERROR'
+        return ex,'C.ERROR'
 
 
 if servers:
@@ -34,7 +34,7 @@ if servers:
         if len(err) > 0:
             print(err)
 else:
-print('Dude, are you sure "servers" entry exists in your configuration.py')
+    print('Dude, are you sure "servers" entry exists in your configuration.py')
 
 ## Not implemented yet
 #if howoften == 'infinite':

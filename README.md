@@ -8,13 +8,18 @@ The script is running a cleaning for the old files and do an archive each week
 
 *Setup*
 
-Configure the timming of the backup inside conf.py
+Configure the list of MySQL serveur to backup in configuration.py
 
 Launch run.py within supervisord with the configuration gave as exemple into supervisor directory
 
-sudo mkdir -p /var/log/mydumper
+<code> sudo mkdir -p /var/log/mydumper </code>
+<code> ln -s /coderepository/mydumper_supervisord/bkp_mydumper /usr/bin/bkp_mydumper </code>
+<code> chmod +x /usr/bin/bkp_mydumper </code>
 
 *dependancy*
+
 python3
+
 mailx
+
 mydumper
