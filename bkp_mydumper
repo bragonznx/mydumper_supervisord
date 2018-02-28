@@ -14,18 +14,19 @@ lockFile="/var/lock/mydumper-pull.lock"
 errorFile="/var/log/mydumper/mydumper.err"
 logFile="/var/log/mydumper/mydumper.log"
 retention=30 # Retention in days
-mysqlUser=storix
+mysqlUser=$2
 mysqlPort=3306
-mysqlPassword=
+mysqlPassword=$3
 ### Please fix the host accordigly
-remoteHost=1.1.1.1
-backupPath="/home/storix/datastore/$(date +%Y%m%d)/"
+remoteHost=$1
+## fix it for your own use
+backupPath="/home/bragon/dump/$(date +%Y%m%d)/"
 numberThreads=4
 # Retention times #
 weekly=1
 daily=7
 ######
-email="plop@plop.com"
+email="example@exemple.com"
 today=`date +%y-%m-%d-%H:%M`
 
 # Function definitions
@@ -116,7 +117,7 @@ runMydumper() {
 
 	verifyMydumperBin
 	logInfo "[Info] Dumping data with MyDumper.....start"
-	out=$(mydumper --user=${mysqlUser} --outputdir=${backupPath} --host=${remoteHost} --port=${mysqlPort} --threads=${numberThreads} --compress --kill-long-queries --less-locking --verbose=3 --triggers --routines &>> $logFile)
+	out=$(mydumper --user=${mysqlUser} --password=${mysqlPassword} --outputdir=${backupPath} --host=${remoteHost} --port=${mysqlPort} --threads=${numberThreads} --compress --kill-long-queries --less-locking --verbose=3 --triggers --routines &>> $logFile)
 	verifyExecution "$?" "Couldn't execute MyDumper. $out" true
 
 	logInfo "[Info] Dumping data with MyDumper.....end"
@@ -132,7 +133,7 @@ runMydumper_sdb() { #for a single DB gived in argument
     exit 0
     fi
     logInfo "[Info] Dumping data with MyDumper single Database .....start"
-    out=$(mydumper -B $db --user=${mysqlUser} --outputdir=${backupPath} --host=${remoteHost} --port=${mysqlPort} --threads=${numberThreads} --compress --kill-long-queries --less-locking --verbose=3 --triggers --routines &>> $logFile)
+    out=$(mydumper -B $db --user=${mysqlUser} --password=${mysqlPassword} --outputdir=${backupPath} --host=${remoteHost} --port=${mysqlPort} --threads=${numberThreads} --compress --kill-long-queries --less-locking --verbose=3 --triggers --routines &>> $logFile)
     }
 
 

@@ -11,3 +11,10 @@ The script is running a cleaning for the old files and do an archive each week
 Configure the timming of the backup inside conf.py
 
 Launch run.py within supervisord with the configuration gave as exemple into supervisor directory
+
+sudo mkdir -p /var/log/mydumper
+
+*dependancy*
+python3
+mailx
+mydumper
