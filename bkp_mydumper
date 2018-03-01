@@ -16,7 +16,7 @@ mysqlPassword=$3
 ### Please fix the host accordigly
 remoteHost=$1
 ## fix it for your own use
-backupPath="/home/bragon/dump/$remoteHost-$(date +%Y%m%d)/"
+backupPath="/dump/$remoteHost-$(date +%Y%m%d)/"
 numberThreads=4
 # Retention times #
 weekly=1
