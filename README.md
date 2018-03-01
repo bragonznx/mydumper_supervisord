@@ -18,6 +18,9 @@ Launch run.py within supervisord with the configuration gave as exemple into sup
 
 <code> chmod +x /usr/bin/bkp_mydumper </code>
 
+<code> cp supervisor/bkp_mydumper.conf /etc/supervisor/conf.d/ </code>
+
+
 *dependancy*
 
 python3
@@ -25,3 +28,10 @@ python3
 mailx
 
 mydumper
+
+*On MYSQL/MariaDB/Percona to backup*
+<code>
+% mysql --user=root mysql
+CREATE USER 'mydumper'@'ip_of_mydumper_server' IDENTIFIED BY 'toor';
+GRANT ALL PRIVILEGES ON *.* TO 'mydumper'@'ip_of_mydumper_server' WITH GRANT OPTION;
+</code>

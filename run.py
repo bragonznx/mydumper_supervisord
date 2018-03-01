@@ -29,7 +29,7 @@ if servers:
         info = servers[server]
         howoften = info[3]
         command = "%s %s %s %s" % (MYSQL_BINARY, info[0], info[1], info[2])
-        time.sleep(howoften)
+        time.sleep(int(howoften))
         out, err = executor(command)
         print('Backuped up %s' % server, out.decode())
         if len(err) > 0:
