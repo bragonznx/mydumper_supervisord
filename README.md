@@ -27,7 +27,8 @@ python3
 
 mailx
 
-mydumper
+mydumper / mysqldump (commint usualy with mysql-client or mariadb-client)
+
 
 *On MYSQL/MariaDB/Percona to backup*
 <code>
