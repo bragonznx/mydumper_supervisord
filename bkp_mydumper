@@ -4,10 +4,6 @@
 # freely inspired  from Daniel Guzman Burgos <daniel.guzman.burgos@percona.com> modified by Alexandre Legrix
 # Adapted by Alexandre Legrix to match with a supervisor running use <alex@bso.cloud> and to run without the usage of any crontab
 
-clear
-
-set -o pipefail
-
 # Initial values
 
 lockFile="/var/lock/mydumper-pull.lock"
