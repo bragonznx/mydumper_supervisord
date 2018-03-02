@@ -1,0 +1,11 @@
+/var/log/mydumper/mydumper.log {
+    weekly
+    rotate 7
+    compress
+    delaycompress
+    missingok
+    notifempty
+    create 0640 root root
+    sharedscripts
+    endscript
+}

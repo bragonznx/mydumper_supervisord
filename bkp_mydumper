@@ -16,7 +16,7 @@ mysqlPassword=$3
 ### Please fix the host accordigly
 remoteHost=$1
 ## fix it for your own use
-backupPath="/dump/$remoteHost-$(date +%Y%m%d)/"
+backupPath="/dump/$remoteHost-$(date +%Y%m%d-%H:%M)/"
 numberThreads=4
 # Retention times #
 weekly=1
@@ -31,7 +31,7 @@ sendAlert() {
         if [ -e "$errorFile" ]
         then
                 alertMsg=$(cat $errorFile)
-                echo -e "${alertMsg}" | mailx -s "[$HOSTNAME] ALERT MyDumper backups" "${email}"
+                echo -e "${alertMsg}" | mailx -s "[$HOSTNAME] ALERT MyDumper backups on [$remoteHost]" "${email}"
         fi
 }
 
