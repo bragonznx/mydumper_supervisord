@@ -6,7 +6,7 @@
 
 # Initial values
 
-lockFile="/var/lock/mydumper-pull.lock"
+lockFile="/var/lock/mydumper-pull-`hostname`.lock"
 errorFile="/var/log/mydumper/mydumper.err"
 logFile="/var/log/mydumper/mydumper.log"
 retention=30 # Retention in days
